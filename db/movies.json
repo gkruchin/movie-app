@@ -1,1 +1,4 @@
-[]
+[
+  { "id": 1, "title": "First Movie" },
+  { "id": 2, "title": "Second Movie" }
+]

@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 
-class Movie extends Component {
-  render() {
-    return <div>HELLO</div>;
-  }
-}
+const Movie = (props) => {
+  return <div className="movie-box">{props.title}</div>;
+};
 
 export default Movie;

@@ -6,6 +6,7 @@ class Feed extends Component {
     super();
     this.state = {
       title: "",
+      movies: [],
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -20,10 +21,30 @@ class Feed extends Component {
     });
   }
 
+  componentDidMount() {
+    fetch("/movies")
+      .then((res) => res.json())
+      .then((movies) =>
+        this.setState({ movies: movies }, () =>
+          console.log("movies fetched...", movies)
+        )
+      );
+  }
+
   handleSubmit(e) {
     //make a get request to server
     e.preventDefault();
-    console.log("submitted!");
+    console.log(this.state);
+
+    fetch("/addmovies", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        title: this.state.title,
+      }),
+    });
   }
 
   render() {
@@ -33,6 +54,7 @@ class Feed extends Component {
           movie={this.state.title}
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
+          movies={this.state.movies}
         />
       </div>
     );
