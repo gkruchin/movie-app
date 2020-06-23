@@ -14,6 +14,7 @@ const App = () => {
           <Route exact path="/signup" component={Signup} />
           <Route exact path="/feed" component={Feed} />
           <Route exact path="/" component={Home} />
+          <div>404</div>
         </Switch>
       </Router>
     </div>

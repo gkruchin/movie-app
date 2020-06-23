@@ -4,11 +4,11 @@ const express = require("express");
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.get("/", (req, res) => {
+app.use("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../index.html"));
 });
 
-// app.post("/login", (req, res) => {
+// app.get("/login", (req, res) => {
 //   res.redirect(path.join(__dirname, "../client/containers/Feed.jsx"));
 // });
 

@@ -7,19 +7,27 @@ class Login extends Component {
     this.state = {
       username: "",
       password: "",
+      loggedIn: false,
     };
 
     this.onSubmit = this.onSubmit.bind(this);
   }
 
-  onSubmit() {
-    <Redirect to="/feed/" />;
+  onSubmit(e) {
+    e.preventDefault();
+    //verifying user
+    this.setState({
+      loggedIn: true,
+    });
   }
 
   render() {
+    if (this.state.loggedIn) {
+      return <Redirect to="/feed" />;
+    }
     return (
       <div>
-        <form onSubmit={onSubmit}>
+        <form onSubmit={this.onSubmit}>
           <input name="username" type="text" placeholder="username"></input>
           <input name="password" type="password" placeholder="password"></input>
           <input type="submit" value="login" />
