@@ -12,6 +12,11 @@ app.use("*", (req, res) => {
 //   res.redirect(path.join(__dirname, "../client/containers/Feed.jsx"));
 // });
 
+// app.post("/addmovie", (req, res) => {
+//   console.log("added movie");
+//   res.send("added movie");
+// });
+
 app.listen(port, () => {
   console.log(`Listening on ${port}`);
 });

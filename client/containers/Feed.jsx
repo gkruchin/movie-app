@@ -20,7 +20,9 @@ class Feed extends Component {
     });
   }
 
-  handleSubmit() {
+  handleSubmit(e) {
+    //make a get request to server
+    e.preventDefault();
     console.log("submitted!");
   }
 
