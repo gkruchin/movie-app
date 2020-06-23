@@ -3,7 +3,7 @@ import React, { Component } from "react";
 class Feed extends Component {
   render() {
     <div>
-      <MovieContainer />
+      <h1>Hello</h1>
     </div>;
   }
 }
