@@ -1,7 +1,6 @@
 const fs = require("fs");
 const path = require("path");
 const Movie = require("../models/movieModel");
-const { runInNewContext } = require("vm");
 
 let movieList;
 movieController = {};
