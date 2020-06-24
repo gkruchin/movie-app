@@ -6,7 +6,7 @@ export default class Home extends Component {
     return (
       <div className="login-container">
         <Link to="/login">Login</Link>
-        <Link to="/signup">Sign up</Link>
+        {/* <Link to="/signup">Sign up</Link> */}
       </div>
     );
   }
