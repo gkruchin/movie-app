@@ -43,7 +43,10 @@ const Movie = (props) => {
           Delete Movie
         </button>
       </div>
-      <div className="comment-box">Your review: {props.comment}</div>
+      <div className="comment-box">
+        <span style={{ color: "rgb(107, 150, 214)" }}>Your review: </span>
+        {props.comment}
+      </div>
     </div>
   );
 };

@@ -88,6 +88,16 @@ movieController.addComment = (req, res, next) => {
     return movie;
   });
 
+  fs.writeFileSync(
+    path.resolve(__dirname, "../../db/movies.json"),
+    JSON.stringify(movieList),
+    (err) => {
+      if (err) {
+        console.log(err);
+      }
+    }
+  );
+
   res.locals.movies = movieList;
   next();
 };
