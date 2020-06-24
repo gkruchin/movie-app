@@ -24,6 +24,15 @@ app.post(
   }
 );
 
+app.delete(
+  "/deletemovie",
+  movieController.deleteMovie,
+  movieController.getMovies,
+  (req, res) => {
+    res.json(res.locals.movies);
+  }
+);
+
 app.use("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../index.html"));
 });

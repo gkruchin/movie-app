@@ -18,12 +18,13 @@ class Feed extends Component {
   componentDidMount() {
     fetch("/movies")
       .then((res) => res.json())
-      .then((movies) => this.setState({ movies }));
+      .then((movies) => {
+        this.setState({ movies });
+      });
   }
 
   handleChange(e) {
     e.preventDefault();
-    console.log(e.target.value);
     this.setState({
       title: e.target.value,
     });
@@ -38,18 +39,20 @@ class Feed extends Component {
   }
 
   deleteMovie(e) {
-    console.log(e);
+    axios.delete("/deletemovie", { data: { id: e.target.id } }).then((res) => {
+      console.log(res);
+      this.setState({ movies: res.data });
+    });
   }
 
   render() {
     return (
       <div className="main-container">
         <MovieContainer
-          movie={this.state.title}
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
           movies={this.state.movies}
-          deleteMove={this.deleteMovie}
+          deleteMovie={this.deleteMovie}
         />
       </div>
     );

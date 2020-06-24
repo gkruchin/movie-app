@@ -28,9 +28,22 @@ class Login extends Component {
     return (
       <div>
         <form onSubmit={this.onSubmit}>
-          <input name="username" type="text" placeholder="username"></input>
-          <input name="password" type="password" placeholder="password"></input>
-          <input type="submit" value="login" />
+          <div className="login-container">
+            <div className="input-group">
+              <label htmlFor="username">Username</label>
+              <input name="username" type="text" placeholder="username"></input>
+            </div>
+
+            <div className="input-group">
+              <label htmlFor="username">Password</label>
+              <input
+                name="password"
+                type="password"
+                placeholder="password"
+              ></input>
+            </div>
+            <input type="submit" value="login" />
+          </div>
         </form>
       </div>
     );

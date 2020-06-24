@@ -13,7 +13,12 @@ const MovieContainer = (props) => {
       <div className="all-movies">
         <h3>Movies You've Watched</h3>
         {props.movies.map((movie) => (
-          <Movie movie={movie} deleteMovie={props.deleteMovie} />
+          <Movie
+            movie={movie}
+            deleteMovie={props.deleteMovie}
+            key={movie._id}
+            id={movie._id}
+          />
         ))}
       </div>
     </div>
