@@ -1,5 +1,4 @@
 const { schema } = require("./userModel");
-
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 

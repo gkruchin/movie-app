@@ -30,7 +30,9 @@ class Login extends Component {
       <div>
         <div className="box-container">
           <div className="content">
-            <Link to="/signup">Register</Link>
+            <p>
+              Don't have an account? <Link to="/signup">Register</Link>
+            </p>
             <form onSubmit={this.onSubmit}>
               <div className="input-group">
                 <label htmlFor="username">Username</label>

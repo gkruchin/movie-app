@@ -35,7 +35,7 @@ class Feed extends Component {
     e.preventDefault();
     axios
       .post("/addmovie", this.state)
-      .then((res) => this.setState({ movies: res.data }));
+      .then((res) => this.setState({ movies: res.data, title: "" }));
   }
 
   deleteMovie(e) {
@@ -52,6 +52,7 @@ class Feed extends Component {
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
           movies={this.state.movies}
+          title={this.state.title}
           deleteMovie={this.deleteMovie}
         />
       </div>

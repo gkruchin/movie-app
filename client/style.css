@@ -10,6 +10,7 @@ h1 {
   width: 100%;
   display: flex;
   justify-content: center;
+  margin: 10px;
 }
 
 .box-container {
@@ -29,6 +30,7 @@ h1 {
 }
 
 .input-group {
+  margin-top: 10px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -42,4 +44,53 @@ h1 {
   padding: 0px 10px;
   font-size: 16px;
   border-radius: 4px;
+}
+
+.login-btn {
+  background-color: rgb(107, 150, 214);
+  border: rgb(107, 150, 214);
+  color: white;
+  border-radius: 5px;
+  width: 100px;
+}
+
+p {
+  font-size: 12px;
+}
+
+.movie-box {
+  border: 1px solid rgb(63, 63, 63);
+  padding: 10px;
+  margin: 5px;
+}
+
+.main-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.movie-input {
+  margin-bottom: 35px;
+}
+
+.movie-feed {
+  padding: 15px;
+  box-shadow: 5px 10px #888888;
+  border: 1px solid rgb(63, 63, 63);
+}
+
+.title-and-heart {
+  display: flex;
+  justify-content: space-between;
+}
+
+.fas:hover {
+  color: red;
+}
+
+.delete-btn {
+  font-size: 12px;
+  margin-top: 5px;
 }
