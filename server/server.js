@@ -9,9 +9,20 @@ const port = process.env.PORT || 3000;
 //   res.redirect(path.join(__dirname, "../client/containers/Feed.jsx"));
 // });
 
+app.use(express.json());
+
 app.get("/movies", movieController.getMovies, (req, res) => {
   res.json(res.locals.movies);
 });
+
+app.post(
+  "/addmovie",
+  movieController.addMovie,
+  movieController.getMovies,
+  (req, res) => {
+    res.json(res.locals.movies);
+  }
+);
 
 app.use("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../index.html"));

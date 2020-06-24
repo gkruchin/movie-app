@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Movie from "../components/Movie.jsx";
 
-const movieMaker = (movie) => <Movie {...movie} />;
+// const movieMaker = (movie) => <Movie {...movie} />;
 
 const MovieContainer = (props) => {
   return (
@@ -12,7 +12,9 @@ const MovieContainer = (props) => {
       </form>
       <div className="all-movies">
         <h3>Movies You've Watched</h3>
-        {props.movies.map((movie) => movieMaker(movie))}
+        {props.movies.map((movie) => (
+          <Movie movie={movie} />
+        ))}
       </div>
     </div>
   );

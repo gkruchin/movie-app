@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import MovieContainer from "./MovieContainer.jsx";
+import axios from "axios";
 
 class Feed extends Component {
   constructor() {
@@ -24,27 +25,15 @@ class Feed extends Component {
   componentDidMount() {
     fetch("/movies")
       .then((res) => res.json())
-      .then((movies) =>
-        this.setState({ movies: movies }, () =>
-          console.log("movies fetched...", movies)
-        )
-      );
+      .then((movies) => this.setState({ movies }));
   }
 
   handleSubmit(e) {
     //make a get request to server
     e.preventDefault();
-    console.log(this.state);
-
-    fetch("/addmovies", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        title: this.state.title,
-      }),
-    });
+    axios
+      .post("/addmovie", this.state)
+      .then((res) => this.setState({ movies: res.data }));
   }
 
   render() {
