@@ -8,7 +8,6 @@ class Feed extends Component {
     this.state = {
       title: "",
       movies: [],
-      liked: [],
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -51,14 +50,12 @@ class Feed extends Component {
     console.log("clicked", e.target.id);
     axios.post("/addlike", { id: e.target.id }).then((res) =>
       this.setState({
-        liked: res.data,
+        movies: res.data,
       })
     );
   }
 
   render() {
-    console.log("clicked on heart");
-    console.log(this.state.liked);
     return (
       <div className="main-container">
         <MovieContainer
@@ -68,7 +65,6 @@ class Feed extends Component {
           title={this.state.title}
           deleteMovie={this.deleteMovie}
           handleLike={this.handleLike}
-          liked={this.state.liked}
         />
       </div>
     );

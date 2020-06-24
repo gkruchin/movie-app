@@ -45,7 +45,7 @@ app.delete(
 );
 
 app.post("/addlike", movieController.addLike, (req, res) => {
-  res.json(res.locals.likedMovies);
+  res.json(res.locals.movies);
 });
 
 app.use("*", (req, res) => {

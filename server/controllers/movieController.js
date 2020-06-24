@@ -62,8 +62,6 @@ movieController.addLike = (req, res, next) => {
     return movie;
   });
 
-  likedMovies = movieList.filter((movie) => movie.liked);
-
   fs.writeFileSync(
     path.resolve(__dirname, "../../db/movies.json"),
     JSON.stringify(movieList),
@@ -74,7 +72,7 @@ movieController.addLike = (req, res, next) => {
     }
   );
 
-  res.locals.likedMovies = likedMovies;
+  res.locals.movies = movieList;
   next();
 };
 
