@@ -25,13 +25,11 @@ class Signup extends Component {
       email.length === 0 ||
       (!email.includes("@") && username.length === 0 && password.length === 0)
     ) {
-      console.log("inside validate");
       return this.setState({
         invalidEmail: true,
         incorrectInput: true,
       });
     }
-    console.log(this.state);
 
     axios.post("/createuser", { username, password }).then(
       this.setState({

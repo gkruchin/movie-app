@@ -76,4 +76,20 @@ movieController.addLike = (req, res, next) => {
   next();
 };
 
+movieController.addComment = (req, res, next) => {
+  movieList = JSON.parse(
+    fs.readFileSync(path.resolve(__dirname, "../../db/movies.json"))
+  );
+
+  movieList = movieList.map((movie) => {
+    if (movie._id === req.body.id) {
+      movie.comment = req.body.comment;
+    }
+    return movie;
+  });
+
+  res.locals.movies = movieList;
+  next();
+};
+
 module.exports = movieController;

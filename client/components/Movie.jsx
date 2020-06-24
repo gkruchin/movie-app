@@ -21,13 +21,29 @@ const Movie = (props) => {
           ></i>
         )}
       </div>
-      <button
-        onClick={(e) => props.deleteMovie(e)}
-        id={props.id}
-        className="delete-btn"
-      >
-        Delete
-      </button>
+      <div className="btn">
+        <input
+          className="comment-box"
+          id={props.id}
+          onChange={(e) => props.handleComment(e)}
+          placeholder="Add Comment"
+        ></input>
+        <button
+          className="function-btn"
+          id={props.id}
+          onClick={(e) => props.submitComment(e)}
+        >
+          Submit
+        </button>
+        <button
+          onClick={(e) => props.deleteMovie(e)}
+          id={props.id}
+          className="function-btn"
+        >
+          Delete Movie
+        </button>
+      </div>
+      <div className="comment-box">Your review: {props.comment}</div>
     </div>
   );
 };

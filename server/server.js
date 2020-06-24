@@ -13,12 +13,10 @@ const port = process.env.PORT || 3000;
 app.use(express.json());
 
 app.post("/validate", userController.validate, (req, res) => {
-  console.log("after validate");
   res.json(res.locals.login);
 });
 
 app.post("/createuser", userController.createUser, (req, res) => {
-  console.log(req.body);
   res.json(req.body);
 });
 
@@ -45,6 +43,10 @@ app.delete(
 );
 
 app.post("/addlike", movieController.addLike, (req, res) => {
+  res.json(res.locals.movies);
+});
+
+app.post("/submitcomment", movieController.addComment, (req, res) => {
   res.json(res.locals.movies);
 });
 

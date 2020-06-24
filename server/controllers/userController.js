@@ -11,7 +11,6 @@ userController.validate = (req, res, next) => {
   );
 
   for (let user of userList) {
-    console.log(user);
     if (
       user.username === req.body.username &&
       user.password === req.body.password

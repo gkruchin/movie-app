@@ -8,12 +8,15 @@ class Feed extends Component {
     this.state = {
       title: "",
       movies: [],
+      comment: "",
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.deleteMovie = this.deleteMovie.bind(this);
     this.handleLike = this.handleLike.bind(this);
+    this.handleComment = this.handleComment.bind(this);
+    this.submitComment = this.submitComment.bind(this);
   }
 
   componentDidMount() {
@@ -41,18 +44,35 @@ class Feed extends Component {
 
   deleteMovie(e) {
     axios.delete("/deletemovie", { data: { id: e.target.id } }).then((res) => {
-      console.log(res);
       this.setState({ movies: res.data });
     });
   }
 
   handleLike(e) {
-    console.log("clicked", e.target.id);
     axios.post("/addlike", { id: e.target.id }).then((res) =>
       this.setState({
         movies: res.data,
       })
     );
+  }
+
+  handleComment(e) {
+    this.setState({
+      comment: e.target.value,
+    });
+  }
+
+  submitComment(e) {
+    axios
+      .post("/submitcomment", {
+        comment: this.state.comment,
+        id: e.target.id,
+      })
+      .then((res) => {
+        this.setState({
+          movies: res.data,
+        });
+      });
   }
 
   render() {
@@ -65,6 +85,8 @@ class Feed extends Component {
           title={this.state.title}
           deleteMovie={this.deleteMovie}
           handleLike={this.handleLike}
+          handleComment={this.handleComment}
+          submitComment={this.submitComment}
         />
       </div>
     );

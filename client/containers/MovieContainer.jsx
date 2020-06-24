@@ -27,8 +27,11 @@ const MovieContainer = (props) => {
               deleteMovie={props.deleteMovie}
               key={movie._id}
               id={movie._id}
+              comment={movie.comment}
               handleLike={props.handleLike}
               liked={movie.liked}
+              handleComment={props.handleComment}
+              submitComment={props.submitComment}
             />
           ))}
         </div>
