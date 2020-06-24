@@ -27,6 +27,8 @@ const MovieContainer = (props) => {
               deleteMovie={props.deleteMovie}
               key={movie._id}
               id={movie._id}
+              handleLike={props.handleLike}
+              liked={movie.liked}
             />
           ))}
         </div>

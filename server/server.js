@@ -44,6 +44,10 @@ app.delete(
   }
 );
 
+app.post("/addlike", movieController.addLike, (req, res) => {
+  res.json(res.locals.likedMovies);
+});
+
 app.use("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../index.html"));
 });

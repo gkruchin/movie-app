@@ -3,6 +3,7 @@ const path = require("path");
 const Movie = require("../models/movieModel");
 
 let movieList;
+let likedMovies;
 movieController = {};
 
 movieController.getMovies = (req, res, next) => {
@@ -14,7 +15,7 @@ movieController.getMovies = (req, res, next) => {
 };
 
 movieController.addMovie = (req, res, next) => {
-  const movie = new Movie({ title: req.body.title });
+  const movie = new Movie({ title: req.body.title, liked: false });
   movieList = JSON.parse(
     fs.readFileSync(path.resolve(__dirname, "../../db/movies.json"))
   );
@@ -46,6 +47,34 @@ movieController.deleteMovie = (req, res, next) => {
       }
     }
   );
+  next();
+};
+
+movieController.addLike = (req, res, next) => {
+  movieList = JSON.parse(
+    fs.readFileSync(path.resolve(__dirname, "../../db/movies.json"))
+  );
+
+  movieList = movieList.map((movie) => {
+    if (movie._id === req.body.id) {
+      movie.liked = !movie.liked;
+    }
+    return movie;
+  });
+
+  likedMovies = movieList.filter((movie) => movie.liked);
+
+  fs.writeFileSync(
+    path.resolve(__dirname, "../../db/movies.json"),
+    JSON.stringify(movieList),
+    (err) => {
+      if (err) {
+        console.log(err);
+      }
+    }
+  );
+
+  res.locals.likedMovies = likedMovies;
   next();
 };
 

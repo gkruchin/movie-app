@@ -5,7 +5,21 @@ const Movie = (props) => {
     <div className="movie-box">
       <div className="title-and-heart">
         {props.movie.title}
-        <i className="fas fa-heart"></i>
+        {props.liked ? (
+          <i
+            className="fas fa-heart"
+            onClick={(e) => props.handleLike(e)}
+            id={props.id}
+            style={{ color: "red" }}
+          ></i>
+        ) : (
+          <i
+            className="fas fa-heart"
+            onClick={(e) => props.handleLike(e)}
+            id={props.id}
+            style={{ color: "gray" }}
+          ></i>
+        )}
       </div>
       <button
         onClick={(e) => props.deleteMovie(e)}
