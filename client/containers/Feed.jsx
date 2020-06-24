@@ -12,6 +12,13 @@ class Feed extends Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.deleteMovie = this.deleteMovie.bind(this);
+  }
+
+  componentDidMount() {
+    fetch("/movies")
+      .then((res) => res.json())
+      .then((movies) => this.setState({ movies }));
   }
 
   handleChange(e) {
@@ -22,18 +29,16 @@ class Feed extends Component {
     });
   }
 
-  componentDidMount() {
-    fetch("/movies")
-      .then((res) => res.json())
-      .then((movies) => this.setState({ movies }));
-  }
-
   handleSubmit(e) {
     //make a get request to server
     e.preventDefault();
     axios
       .post("/addmovie", this.state)
       .then((res) => this.setState({ movies: res.data }));
+  }
+
+  deleteMovie(e) {
+    console.log(e);
   }
 
   render() {
@@ -44,6 +49,7 @@ class Feed extends Component {
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
           movies={this.state.movies}
+          deleteMove={this.deleteMovie}
         />
       </div>
     );

@@ -28,11 +28,6 @@ app.use("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../index.html"));
 });
 
-// app.post("/addmovie", (req, res) => {
-//   console.log("added movie");
-//   res.send("added movie");
-// });
-
 app.listen(port, () => {
   console.log(`Listening on ${port}`);
 });
